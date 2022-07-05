@@ -26,23 +26,20 @@ while True:
 # Converting matrix to numpy matrix
 matrix = np.array(matrix)
 
-for j in range(1,columns):
+for j in range(1,columns+1):
     for i in range(j,rows):
-        # if flag==1:
-        #     i -= 1
-        #     flag -=1
         current = matrix[i][j-1]
         current_row = matrix[i]
         key = matrix[j-1][j-1]
         key_row = matrix[j-1]
-        print(current,current_row,key,key_row)
+        # Printing for debugging
+        # print(current,current_row,key,key_row)
         # Required condition of making zero is already satisfied
         if current == 0:
             continue
         # Case when key is zero
         if key == 0:
             # Operation such that key element won't be zero
-            
             temp_var = 0
             # Checking that adjacent row isn't zero
             # Changing adjacent row if it is zero
@@ -55,12 +52,15 @@ for j in range(1,columns):
             matrix[j-1] = key_row + adjacent_row
             print('R',j,' -> ','R',j,' + ','R',j+temp_var,sep="")
             printf(matrix)
-            # Resetting loop iteration
-            i-=1
-            print(i,'`',sep="")
-            continue
+            # Setting new changed values
+            current = matrix[i][j-1]
+            current_row = matrix[i]
+            key = matrix[j-1][j-1]
+            key_row = matrix[j-1]
+            pass
+
         # Case when current element is exactly divisible by key
-        elif current%key==0:
+        if current%key==0:
             factor = current//key
             # Operation on current row
             matrix[i] = current_row - factor*key_row
