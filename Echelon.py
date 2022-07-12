@@ -1,6 +1,5 @@
 import numpy as np
 
-flag = 0
 # To print matrix without brackets
 def printf(mat):
     print(str(mat).replace(' [', '').replace('[', '').replace(']', ''),end="\n\n")
